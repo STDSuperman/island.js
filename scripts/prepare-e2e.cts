@@ -21,8 +21,14 @@ async function prepareE2E() {
     });
   }
 
-  console.log('custom log: ', tempDir, process.cwd);
+  console.log('custom log: ', tempDir, process.cwd());
   console.log('custom log: ', fse.emptyDirSync(tempDir));
+  console.log('custom log: ', execa.execaCommandSync('ls ..', {
+    cwd: process.cwd(),
+  }));
+  console.log('custom log: ', execa.execaCommandSync('ls ../..',  {
+    cwd: process.cwd(),
+  }));
 
   process.exit(0);
 
