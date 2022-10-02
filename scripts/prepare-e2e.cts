@@ -24,6 +24,8 @@ async function prepareE2E() {
   console.log('custom log: ', tempDir, process.cwd);
   console.log('custom log: ', fse.emptyDirSync(tempDir));
 
+  process.exit(0);
+
   // exec dev command
   // execa.execaCommandSync('npm run dev', defaultExecaOpts);
 }
