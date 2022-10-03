@@ -32,7 +32,12 @@ async function prepareE2E() {
 
   // process.exit(0);
 
-  execa.execaCommandSync('tree -I "node_modules"', defaultExecaOpts);
+  execa.execaCommandSync('tree -I "node_modules"', {
+    cwd: path.join(__dirname, '../'),
+    stdout: process.stdout,
+    stdin: process.stdin,
+    stderr: process.stderr
+  });
 
   // exec dev command
   execa.execaCommandSync('npm run dev', defaultExecaOpts);
