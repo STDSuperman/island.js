@@ -2,16 +2,16 @@ import path from 'path';
 import fse from 'fs-extra';
 import * as execa from 'execa';
 
-const tempDir = path.resolve(__dirname, '../example/quick-learning');
+const exampleDir = path.resolve(__dirname, '../example/quick-learning');
 const defaultExecaOpts = {
-  cwd: tempDir,
+  cwd: exampleDir,
   stdout: process.stdout,
   stdin: process.stdin,
   stderr: process.stderr
 };
 
 async function prepareE2E() {
-  // await fse.ensureDir(tempDir);
+  await fse.ensureDir(exampleDir);
 
   // ensure after build
   if (!fse.existsSync(path.resolve(__dirname, '../dist'))) {
@@ -21,8 +21,8 @@ async function prepareE2E() {
     });
   }
 
-  // console.log('custom log: ', tempDir, process.cwd());
-  // console.log('custom log: ', fse.emptyDirSync(tempDir));
+  // console.log('custom log: ', exampleDir, process.cwd());
+  // console.log('custom log: ', fse.emptyDirSync(exampleDir));
   // execa.execaCommandSync('tree -I "node_modules"', {
   //   cwd: path.resolve(__dirname, '../'),
   //   stdout: process.stdout,
@@ -31,6 +31,8 @@ async function prepareE2E() {
   // });
 
   // process.exit(0);
+
+  execa.execaCommandSync('tree -I "node_modules"', defaultExecaOpts);
 
   // exec dev command
   execa.execaCommandSync('npm run dev', defaultExecaOpts);
