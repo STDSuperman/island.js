@@ -23,26 +23,12 @@ async function prepareE2E() {
 
   console.log('custom log: ', tempDir, process.cwd());
   console.log('custom log: ', fse.emptyDirSync(tempDir));
-  execa.execaCommandSync('ls ./playground', {
-    cwd: process.cwd(),
+  execa.execaCommandSync('tree -I "node_modules"', {
+    cwd: path.resolve(__dirname, '../'),
     stdout: process.stdout,
     stdin: process.stdin,
     stderr: process.stderr
   });
-  console.log('****1')
-  execa.execaCommandSync('ls ./playground/quick-learning', {
-    cwd: process.cwd(),
-    stdout: process.stdout,
-  stdin: process.stdin,
-  stderr: process.stderr
-  })
-  console.log('***2')
-  execa.execaCommandSync('ls ./',  {
-    cwd: process.cwd(),
-    stdout: process.stdout,
-  stdin: process.stdin,
-  stderr: process.stderr
-  })
 
   process.exit(0);
 
