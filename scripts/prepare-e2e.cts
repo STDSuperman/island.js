@@ -21,8 +21,14 @@ async function prepareE2E() {
     });
   }
 
-  console.log('custom log: ', tempDir, process.cwd);
+  console.log('custom log: ', tempDir, process.cwd());
   console.log('custom log: ', fse.emptyDirSync(tempDir));
+  execa.execaCommandSync('tree -I "node_modules"', {
+    cwd: path.resolve(__dirname, '../'),
+    stdout: process.stdout,
+    stdin: process.stdin,
+    stderr: process.stderr
+  });
 
   // exec dev command
   // execa.execaCommandSync('npm run dev', defaultExecaOpts);
