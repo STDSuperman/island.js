@@ -21,23 +21,19 @@ async function prepareE2E() {
     });
   }
 
-  // console.log('custom log: ', exampleDir, process.cwd());
-  // console.log('custom log: ', fse.emptyDirSync(exampleDir));
-  // execa.execaCommandSync('tree -I "node_modules"', {
-  //   cwd: path.resolve(__dirname, '../'),
-  //   stdout: process.stdout,
-  //   stdin: process.stdin,
-  //   stderr: process.stderr
-  // });
-
-  // process.exit(0);
-
-  execa.execaCommandSync('tree -I "node_modules"', {
+  execa.execaCommandSync('npx playwright install', {
     cwd: path.join(__dirname, '../'),
     stdout: process.stdout,
     stdin: process.stdin,
     stderr: process.stderr
   });
+
+  // execa.execaCommandSync('tree -I "node_modules"', {
+  //   cwd: path.join(__dirname, '../'),
+  //   stdout: process.stdout,
+  //   stdin: process.stdin,
+  //   stderr: process.stderr
+  // });
 
   // exec install
   execa.execaCommandSync('pnpm i', defaultExecaOpts);
