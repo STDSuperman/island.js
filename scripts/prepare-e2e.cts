@@ -39,6 +39,9 @@ async function prepareE2E() {
     stderr: process.stderr
   });
 
+  // exec install
+  execa.execaCommandSync('pnpm i', defaultExecaOpts);
+
   // exec dev command
   execa.execaCommandSync('npm run dev', defaultExecaOpts);
 }
