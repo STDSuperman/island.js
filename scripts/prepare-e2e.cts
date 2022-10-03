@@ -11,7 +11,7 @@ const defaultExecaOpts = {
 };
 
 async function prepareE2E() {
-  await fse.ensureDir(tempDir);
+  // await fse.ensureDir(tempDir);
 
   // ensure after build
   if (!fse.existsSync(path.resolve(__dirname, '../dist'))) {
